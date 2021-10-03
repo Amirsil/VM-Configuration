@@ -1,0 +1,110 @@
+---
+- name: Configure new VM to be comfortable to use
+  hosts: vms
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: Install useful vim configurations
+      copy:
+        dest: ~/.vimrc
+        content: |
+            :set number
+            :set shiftwidth=2
+            :set tabstop=2
+            :set autoindent
+            :set smartindent
+
+    - name: Install git
+      yum:
+        name: git
+        state: present
+
+    - name: Download nice bash prompt configurations
+      git:
+        repo: https://github.com/chris-marsh/pureline
+        dest: /root/pureline
+
+
+    - name: Load configurations
+      copy: 
+        src: /root/pureline/configs/powerline_full_256col.conf
+        dest: /root/.pureline.conf
+        remote_src: yes
+
+
+    - name: setup useful aliases
+      copy:
+        dest: ~/.bashrc
+        content: |
+            # .bashrc
+            
+            # Bash prompt configuration
+            source ~/pureline/pureline ~/.pureline.conf
+
+            # User specific aliases and functions
+            
+            alias rm='rm -i'
+            alias cp='cp -i'
+            alias mv='mv -i'
+            
+            # Source global definitions
+            if [ -f /etc/bashrc ]; then
+                    . /etc/bashrc
+            fi
+            
+            alias py=python
+            alias la="ls -lAh"
+            alias sl=ls
+            
+            alias start="systemctl start"
+            alias stop="systemctl stop"
+            alias status="systemctl status"
+            alias restart="systemctl restart"
+            alias enable="systemctl enable"
+            alias disable="systemctl disable"
+            
+            alias kubectl="minikube kubectl --"
+            alias kc=kubectl
+            alias jc=journalctl
+            alias ka=kubeadm
+            alias ipa="ip -brief a"
+            
+            function editi() {
+              if [ -z $1 ]
+              then
+                echo Usage: editi [NETWORK-INTERFACE]
+              else
+                vim /etc/sysconfig/network-scripts/ifcfg-$1
+              fi
+            }
+            
+            function showi() {
+              if [ -z $1 ]
+              then
+                echo Usage: showi [NETWORK-INTERFACE]
+              else
+                cat /etc/sysconfig/network-scripts/ifcfg-$1
+              fi
+            }
+
+            function expose() {
+              if [ -z $1 ]
+              then
+                echo Usage: expose [PORT]
+              else
+                sudo firewall-cmd --permanent --add-port=$1/tcp
+                sudo firewall-cmd --reload
+              fi
+            }
+
+            function block() {
+              if [ -z $1 ]
+              then
+                echo Usage: block [PORT]
+              else
+                sudo firewall-cmd --permanent --remove-port=$1/tcp
+                sudo firewall-cmd --reload
+              fi
+            }
+
+            alias allowed="sudo firewall-cmd --list-all"
