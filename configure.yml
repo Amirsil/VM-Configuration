@@ -21,7 +21,7 @@
 
     - name: Download nice bash prompt configurations
       git:
-        repo: https://github.com/chris-marsh/pureline
+        repo: https://github.com/amirsil/pureline
         dest: /root/pureline
 
 
