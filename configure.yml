@@ -55,6 +55,7 @@
             alias restart="systemctl restart"
             alias enable="systemctl enable"
             alias disable="systemctl disable"
+            alias services="systemctl list-units -t service"
             
             alias watch="watch -n 1 "
             alias kubectl="minikube kubectl --"
