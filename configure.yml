@@ -25,7 +25,7 @@
         dest: /root/.pureline.conf
         remote_src: yes
 
-    - name: setup useful aliases
+    - name: Setup useful aliases
       copy:
         dest: ~/.bashrc
         content: |
