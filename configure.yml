@@ -13,24 +13,17 @@
             :set tabstop=2
             :set autoindent
             :set smartindent
-
-    - name: Install git
-      yum:
-        name: git
-        state: present
-
+            
     - name: Download nice bash prompt configurations
       git:
         repo: https://github.com/amirsil/pureline
         dest: /root/pureline
-
 
     - name: Load configurations
       copy: 
         src: /root/pureline/configs/powerline_full_8col.conf
         dest: /root/.pureline.conf
         remote_src: yes
-
 
     - name: setup useful aliases
       copy:
