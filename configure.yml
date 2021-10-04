@@ -63,6 +63,7 @@
             alias enable="systemctl enable"
             alias disable="systemctl disable"
             
+            alias watch="watch "
             alias kubectl="minikube kubectl --"
             alias kc=kubectl
             alias jc=journalctl
