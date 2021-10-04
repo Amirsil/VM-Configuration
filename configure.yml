@@ -61,6 +61,7 @@
             alias kc=kubectl
             alias jc=journalctl
             alias ka=kubeadm
+            alias mk=minikube
             alias ipa="ip -brief a"
             
             function editi() {
