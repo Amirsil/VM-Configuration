@@ -27,7 +27,7 @@
 
     - name: Load configurations
       copy: 
-        src: /root/pureline/configs/powerline_full_256col.conf
+        src: /root/pureline/configs/powerline_full_8col.conf
         dest: /root/.pureline.conf
         remote_src: yes
 
