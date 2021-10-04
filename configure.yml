@@ -12,19 +12,9 @@
             :set shiftwidth=2
             :set tabstop=2
             :set autoindent
-            :set smartindent
+            :set smartindent 
+            :set paste
             
-    - name: Download nice bash prompt configurations
-      git:
-        repo: https://github.com/amirsil/pureline
-        dest: /root/pureline
-
-    - name: Load configurations
-      copy: 
-        src: /root/pureline/configs/powerline_full_8col.conf
-        dest: /root/.pureline.conf
-        remote_src: yes
-
     - name: Setup useful aliases
       copy:
         dest: ~/.bashrc
@@ -104,3 +94,19 @@
             }
 
             alias allowed="sudo firewall-cmd --list-all"
+    
+    - name: Configure bash prompt configurations
+      block: 
+        - name: Download remote bash configurations
+          git:
+            repo: https://github.com/amirsil/pureline
+            dest: /root/pureline
+
+        - name: Activate bash configurations
+          copy: 
+            src: /root/pureline/configs/powerline_basic_8col.conf
+            dest: /root/.pureline.conf
+            remote_src: yes
+      rescue:
+        - debug:
+            msg: Cannot fetch remote bash configurations, Git is not installed
