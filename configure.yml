@@ -47,6 +47,7 @@
             alias disable="systemctl disable"
             alias services="systemctl list-units -t service"
             
+            alias pods="kubectl get po --show-labels"
             alias watch="watch -n 1 "
             alias events="kubectl get events --sort-by=.metadata.creationTimestamp"
             alias kubectl="minikube kubectl --"
