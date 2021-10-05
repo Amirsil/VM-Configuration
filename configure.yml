@@ -48,6 +48,7 @@
             alias services="systemctl list-units -t service"
             
             alias watch="watch -n 1 "
+            alias events="kubectl get events --sort-by=.metadata.creationTimestamp"
             alias kubectl="minikube kubectl --"
             alias kc=kubectl
             alias jc=journalctl
