@@ -56,6 +56,15 @@
             alias mk=minikube
             alias ipa="ip -brief a"
             
+            function debug() {
+              if [ -z $1 ]
+              then
+                echo Usage: debug [POD_NAME]
+              else
+                kc exec -it $1 -- /bin/sh
+              fi
+            }
+            
             function editi() {
               if [ -z $1 ]
               then
