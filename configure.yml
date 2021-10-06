@@ -56,6 +56,7 @@
             alias ka=kubeadm
             alias mk=minikube
             alias ipa="ip -brief a"
+            alias ports="sudo firewall-cmd --list-all | grep -G '\sports:\s'"
             
             function run() {
               if [ -z $1 ] || [ -z $2 ]
@@ -103,8 +104,6 @@
                 sudo firewall-cmd --reload
               fi
             }
-
-            alias allowed="sudo firewall-cmd --list-all | grep -G '\sports:\s'"
     
     - name: Configure bash prompt configurations
       block: 
