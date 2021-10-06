@@ -104,7 +104,7 @@
               fi
             }
 
-            alias allowed="sudo firewall-cmd --list-all"
+            alias allowed="sudo firewall-cmd --list-all | grep -G '\sports:\s'"
     
     - name: Configure bash prompt configurations
       block: 
