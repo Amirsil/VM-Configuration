@@ -57,7 +57,6 @@
             alias disable="systemctl disable"
             alias services="systemctl list-units -t service"
             
-            source <(kubectl completion bash)
             alias pods="kubectl get po"
             alias watch="watch -n 1 "
             alias events="kubectl get events --sort-by=.metadata.creationTimestamp"
@@ -68,6 +67,7 @@
             alias mk=minikube
             alias ipa="ip -brief a"
             alias ports="sudo firewall-cmd --list-all | grep -G '\sports:\s'"
+            source <(kubectl completion bash)
             
             function run() {
               if [ -z $1 ] || [ -z $2 ]
