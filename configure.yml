@@ -3,6 +3,8 @@
   hosts: vms
   gather_facts: false
   become: yes
+  vars:
+    pipelining: true
   tasks:
     - name: Install useful packages for yum based OS
       yum:
