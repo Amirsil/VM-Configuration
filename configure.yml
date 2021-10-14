@@ -69,12 +69,13 @@
             alias ports="sudo firewall-cmd --list-all | grep -G '\sports:\s'"
             source <(kubectl completion bash)
             
+            
             function run() {
               if [ -z $1 ] || [ -z $2 ]
               then
                 echo Usage: run [POD_NAME] [COMMAND]
               else
-                kc exec -it $1 -- "$2"
+                kc exec -it $1 -- $(sed 's/[^ ]* *//' <(echo $*))
               fi
             }
             
