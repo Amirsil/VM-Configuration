@@ -3,4 +3,3 @@
 :set tabstop=2
 :set autoindent
 :set smartindent 
-:set paste

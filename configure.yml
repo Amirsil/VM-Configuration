@@ -6,10 +6,23 @@
   vars:
     pipelining: true
   tasks:
-    - name: User disclaimers
-      debug: 
-        msg: Git must be installed for a custom bash to be loaded
-      
+    - name: Install useful packages 
+      yum:
+        name:
+          - git
+          - zsh
+          - bind-utils
+          - vim
+        state: present
+        update_cache: no
+    
+    - name: Install and configure oh-my-zsh custom shell 
+      shell: yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      ignore_errors: yes
+    
+    - name: Make zsh the default shell
+      shell: chsh -s $(which zsh)
+
     - name: Install useful vim configurations
       copy:
         src: ./.vimrc
@@ -17,21 +30,5 @@
          
     - name: Setup useful aliases
       copy:
-        src: ./.bashrc
-        dest: ~/.bashrc
-        
-    - name: Configure bash prompt configurations
-      block: 
-        - name: Download remote bash configurations
-          git:
-            repo: https://github.com/amirsil/pureline
-            dest: /root/pureline
-
-        - name: Activate bash configurations
-          copy: 
-            src: /root/pureline/configs/powerline_basic_8col.conf
-            dest: /root/.pureline.conf
-            remote_src: yes
-      rescue:
-        - debug:
-            msg: Cannot fetch remote bash configurations, Git is not installed
+        src: ./.zshrc
+        dest: ~/.zshrc       
