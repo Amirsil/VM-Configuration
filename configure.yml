@@ -79,6 +79,15 @@
               fi
             }
             
+            function arg() {
+              if [ -z $1 ]
+              then
+                echo "Usage: arg [ARG_NUMBER]"
+              else
+                awk -v arg="$1" '{print $arg}'
+              fi
+            }
+            
             function editi() {
               if [ -z $1 ]
               then
