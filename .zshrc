@@ -76,7 +76,7 @@ function expose() {
 function block() {
 	if [ -z $1 ]
 	then
-	echo "Usage: block [PORT]"
+		echo "Usage: block [PORT]"
 	else
 		sudo firewall-cmd --permanent --remove-port=$1/tcp
 		sudo firewall-cmd --reload
