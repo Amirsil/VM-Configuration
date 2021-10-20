@@ -27,7 +27,7 @@
         src: ./.vimrc
         dest: ~/.vimrc
          
-    - name: Setup useful aliases
+    - name: Setup useful aliases and functions
       copy:
         src: ./.zshrc
         dest: ~/.zshrc       
