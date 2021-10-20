@@ -15,7 +15,7 @@
         state: present
         update_cache: no
     
-    - name: Install and configure oh-my-zsh custom shell 
+    - name: Install oh-my-zsh
       shell: yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
       ignore_errors: yes
     
