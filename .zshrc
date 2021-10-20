@@ -80,18 +80,18 @@ source <(kubectl completion zsh 2>/dev/null)
 apply() {
   if [ -z $1 ]
   then
-    echo "Usage: apply [MANIFEST_FILE]"
+        echo "Usage: apply [MANIFEST_FILE]"
   else
-                kc apply -f $1
+        kc apply -f $1
   fi
 }
 
 delete() {
   if [ -z $1 ]
   then
-    echo "Usage: delete [MANIFEST_FILE]"
+        echo "Usage: delete [MANIFEST_FILE]"
   else
-                kc delete -f $1
+        kc delete -f $1
   fi
 }
 
