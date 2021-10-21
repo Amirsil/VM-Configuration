@@ -1,5 +1,5 @@
 export ZSH="/home/foo/.oh-my-zsh"
-ZSH_THEME="af-magic"
+ZSH_THEME="bira"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
@@ -25,7 +25,7 @@ alias ports="sudo firewall-cmd --list-all | grep -G '\sports:\s'"
 editi() {
         if [ -z $1 ]
         then
-                echo Usage: editi [NETWORK-INTERFACE]
+                echo "Usage: editi [NETWORK-INTERFACE]"
         else
                 vim /etc/sysconfig/network-scripts/ifcfg-$1
         fi
@@ -34,7 +34,7 @@ editi() {
 showi() {
         if [ -z $1 ]
         then
-                echo Usage: showi [NETWORK-INTERFACE]
+                echo "Usage: showi [NETWORK-INTERFACE]"
         else
                 cat /etc/sysconfig/network-scripts/ifcfg-$1
         fi
@@ -43,7 +43,7 @@ showi() {
 expose() {
         if [ -z $1 ]
         then
-                echo Usage: expose [PORT]
+                echo "Usage: expose [PORT]"
         else
                 sudo firewall-cmd --permanent --add-port=$1/tcp
                 sudo firewall-cmd --reload
@@ -53,7 +53,7 @@ expose() {
 block() {
         if [ -z $1 ]
         then
-                echo Usage: block [PORT]
+                echo "Usage: block [PORT]"
         else
                 sudo firewall-cmd --permanent --remove-port=$1/tcp
                 sudo firewall-cmd --reload
@@ -69,6 +69,10 @@ alias enable="systemctl enable"
 alias disable="systemctl disable"
 alias services="systemctl list-units -t service"
 alias jc=journalctl
+
+# Minikube
+alias mk=minikube
+alias kubectl="minikube kubectl --"
 
 # Kubernetes
 alias pods="kubectl get po"
@@ -98,12 +102,8 @@ delete() {
 run() {
         if [ -z $1 ] || [ -z $2 ]
         then
-                echo Usage: run [POD_NAME] [COMMAND]
+                echo "Usage: run [POD_NAME] [COMMAND]"
         else
                 kc exec -it $1 -- $(sed 's/[^ ]* *//' <(echo $*))
         fi
 }
-
-# Minikube
-alias mk=minikube
-alias kubectl="minikube kubectl --"
