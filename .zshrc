@@ -17,6 +17,7 @@ arg() {
         fi
 }
 
+##!## when piping to another command, make sure to escape the pipes
 fwatch() {
   watch -n 1 "zsh -c \"source ~/.zshrc; $@\""
 }
