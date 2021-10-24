@@ -79,7 +79,6 @@ alias kubectl="minikube kubectl --"
 
 # Kubernetes
 alias pods="kubectl get po"
-alias watch="watch -n 1 "
 alias events="kubectl get events --sort-by=.metadata.creationTimestamp"
 alias kc=kubectl
 source <(kubectl completion zsh 2>/dev/null)
