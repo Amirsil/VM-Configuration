@@ -17,6 +17,9 @@ arg() {
         fi
 }
 
+fwatch() {
+  watch -n 1 "zsh -c \"source ~/.zshrc; $@\""
+}
 
 # Network
 alias ipa="ip -brief a"
