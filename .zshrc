@@ -104,11 +104,22 @@ delete() {
   fi
 }
 
+##!## Runs a command inside a pod
 run() {
         if [ -z $1 ] || [ -z $2 ]
         then
                 echo "Usage: run [POD_NAME] [COMMAND]"
         else
                 kc exec -it $1 -- $(sed 's/[^ ]* *//' <(echo $*))
+        fi
+}
+
+##!## Runs a command in a pod for a specific namespace
+nsrun() {
+        if [ -z $1 ] || [ -z $2 ] || [ -z $3 ]
+        then
+                echo "Usage: nsrun [POD_NAME] [NAMESPACE] [COMMAND]"
+        else
+                kc exec -it $1 -n $2 -- $(sed 's/[^ ]* [^ ]* //' <(echo $*))
         fi
 }
