@@ -87,21 +87,21 @@ alias kc=kubectl
 source <(kubectl completion zsh 2>/dev/null)
 
 apply() {
-  if [ -z $1 ]
-  then
-        echo "Usage: apply [MANIFEST_FILE]"
-  else
-        kc apply -f $1
-  fi
+        if [ -z $1 ]
+        then
+                echo "Usage: apply [MANIFEST_FILE]"
+        else
+                kc apply -f $1
+        fi
 }
 
 delete() {
-  if [ -z $1 ]
-  then
-        echo "Usage: delete [MANIFEST_FILE]"
-  else
-        kc delete -f $1
-  fi
+        if [ -z $1 ]
+        then
+                echo "Usage: delete [MANIFEST_FILE]"
+        else
+                kc delete -f $1
+        fi
 }
 
 ##!## Runs a command inside a pod
