@@ -118,7 +118,7 @@ run() {
 setns() {
         if [ -z $1 ]
         then
-                echo "Usage: setns [NAMESPACE]"
+                kc config get-contexts | arg 5
         else
                 kc config set-context --current --namespace=$1
         fi
