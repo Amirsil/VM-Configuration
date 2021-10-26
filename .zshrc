@@ -114,12 +114,12 @@ run() {
         fi
 }
 
-##!## Runs a command in a pod for a specific namespace
-nsrun() {
-        if [ -z $1 ] || [ -z $2 ] || [ -z $3 ]
+##!## Switch to a different k8s namespace
+setns() {
+        if [ -z $1 ]
         then
-                echo "Usage: nsrun [POD_NAME] [NAMESPACE] [COMMAND]"
+                echo "Usage: setns [NAMESPACE]"
         else
-                kc exec -it $1 -n $2 -- $(sed 's/[^ ]* [^ ]* //' <(echo $*))
+                kc config set-context --current --namespace=$1
         fi
 }
