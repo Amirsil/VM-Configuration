@@ -6,19 +6,29 @@
   vars:
     pipelining: true
   tasks:
+    - name: Stop yum from updating all the time
+      lineinfile:
+        state: present
+        path: /etc/yum.conf
+        line: metadata_expire=30d
+
     - name: Install useful packages 
-      yum:
+      dnf:
         name:
           - git
           - zsh
           - vim
+          - bind-utils
         state: present
         update_cache: no
     
     - name: Install oh-my-zsh
-      shell: yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-      ignore_errors: yes
-    
+      block:
+        - shell: yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      rescue:
+        - debug:
+            msg: Oh My Zsh is already installed   
+
     - name: Make zsh the default shell
       shell: chsh -s $(which zsh)
 
