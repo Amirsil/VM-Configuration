@@ -84,6 +84,10 @@ alias kubectl="minikube kubectl --"
 alias pods="kubectl get po"
 alias events="kubectl get events --sort-by=.metadata.creationTimestamp"
 alias kc=kubectl
+alias get="kc get"
+alias desc="kc describe"
+alias logs="kc logs"
+alias edit="kc edit"
 source <(kubectl completion zsh 2>/dev/null)
 
 apply() {
