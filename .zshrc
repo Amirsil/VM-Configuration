@@ -2,7 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="bira"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
-alias shamiah=yoav
+
 # Miscellaneous
 alias py=python
 alias la="ls -lAh"
