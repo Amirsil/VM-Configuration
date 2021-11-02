@@ -12,6 +12,7 @@
         path: /etc/yum.conf
         line: metadata_expire=30d
       ignore_errors: yes
+      when: ansible_os_family == "RedHat"
 
     - name: Install useful packages 
       package:
