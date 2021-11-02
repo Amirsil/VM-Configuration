@@ -13,7 +13,7 @@
         line: metadata_expire=30d
 
     - name: Install useful packages 
-      dnf:
+      yum:
         name:
           - git
           - zsh
