@@ -11,16 +11,15 @@
         state: present
         path: /etc/yum.conf
         line: metadata_expire=30d
+      ignore_errors: yes
 
     - name: Install useful packages 
-      yum:
+      package:
         name:
           - git
           - zsh
           - vim
-          - bind-utils
         state: present
-        update_cache: no
     
     - name: Install oh-my-zsh
       block:
