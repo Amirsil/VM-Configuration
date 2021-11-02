@@ -1,6 +1,6 @@
 ---
 - name: Configure new VM to be comfortable to use
-  hosts: vms
+  hosts: "{{ hosts }}"
   gather_facts: true
   become: yes
   vars:

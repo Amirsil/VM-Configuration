@@ -8,14 +8,8 @@ Get your new useless machine's public ssh key using
 
 ```ssh-copy-id root@machine.foo```
 
-Add a "vms" group to your inventory at
-```/etc/ansible/hosts```
-And containing your new machines
+Run the playbook on the target hosts by running:
 
-```
-[vms]
-foo.bar
-192.168.128.50
-```
+```ansible-playbook configure.yaml --extra-vars "hosts=<hosts/groups>"```
 
 Then finally, run ```sync.sh```, which will run the Ansible Playbook idempotently
