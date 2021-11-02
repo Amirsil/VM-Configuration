@@ -1,7 +1,7 @@
 ---
 - name: Configure new VM to be comfortable to use
   hosts: vms
-  gather_facts: false
+  gather_facts: true
   become: yes
   vars:
     pipelining: true
@@ -12,6 +12,7 @@
         path: /etc/yum.conf
         line: metadata_expire=30d
       ignore_errors: yes
+      when: ansible_os_family == "RedHat"
 
     - name: Install useful packages 
       package:
