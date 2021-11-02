@@ -5,6 +5,7 @@ To use it, install Ansible first with
 ```pip install ansible```
 
 Get your new useless machine's public ssh key using
+
 ```ssh-copy-id root@machine.foo```
 
 Add a "vms" group to your inventory at
