@@ -11,7 +11,7 @@ Get your new useless machine's public ssh key using
 
 Add a "vms" group to your inventory at
 ```/etc/ansible/hosts```
-And containing your new machines
+And add your new machines
 
 ```
 [vms]
