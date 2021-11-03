@@ -2,6 +2,7 @@
 - name: Configure new VM to be comfortable to use
   hosts: vms
   gather_facts: true
+  gather_subsets: facter
   become: yes
   vars:
     pipelining: true
