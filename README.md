@@ -2,6 +2,7 @@
 Ansible playbook for configuration of a brand new Linux virtual machine, including custom bash prompt and useful shortcuts and vim configurations
 
 To use it, install Ansible first with
+
 ```pip install ansible```
 
 Get your new useless machine's public ssh key using
