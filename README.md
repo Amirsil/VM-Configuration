@@ -1,5 +1,5 @@
 # VM-Configuration
-Ansible playbook for configuration of a brand new Linux virtual machine, including custom bash prompt and useful shortcuts and vim configurations
+Ansible playbook for configuration of a brand new Linux virtual machine, including custom zsh prompt and useful shortcuts and vim configurations
 
 To use it, install Ansible first with
 
