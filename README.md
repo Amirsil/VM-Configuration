@@ -19,4 +19,4 @@ foo.bar
 192.168.128.50
 ```
 
-Then finally, run ```sync.sh```, which will run the Ansible Playbook idempotently
+Then finally, run ```sync.sh```, which will run the Ansible Playbook idempotently using GitOps
