@@ -15,7 +15,9 @@ And add your new machines
 
 ```
 [vms]
-foo.bar
+foo1.bar
+foo2.bar
+foo3.bar
 192.168.128.50
 ```
 
