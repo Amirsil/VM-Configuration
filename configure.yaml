@@ -1,11 +1,15 @@
 ---
 - name: Configure new VM to be comfortable to use
   hosts: vms
-  gather_facts: true
+  gather_facts: false
   become: yes
   vars:
     pipelining: true
   tasks:
+    - name: Gather ansible_os_family
+      setup:
+        filter:
+          - 'ansible_os_family'
     - name: Stop yum from updating all the time
       lineinfile:
         state: present
