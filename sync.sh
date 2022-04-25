@@ -11,3 +11,6 @@ else
 	ansible-playbook configure.yaml
 	cp /etc/ansible/hosts .hosts
 fi
+echo
+echo
+echo
